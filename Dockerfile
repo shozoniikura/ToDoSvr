@@ -26,5 +26,5 @@ RUN echo ${UID}, ${GID}, ${UNAME}
 ADD ./src/Gemfile /src/Gemfile
 ADD ./src/Gemfile.lock /src/Gemfile.lock
 # ADD ./bundle /usr/local/bundle
-RUN bundle install
+# RUN bundle install
 ADD ./.bashrc /home/${UNAME}/
