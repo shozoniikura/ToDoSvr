@@ -1,5 +1,6 @@
 class ToDosController < ApplicationController
   before_action :set_to_do, only: [:show, :edit, :update, :destroy]
+  protect_from_forgery with: :null_session
 
   # GET /to_dos
   # GET /to_dos.json
@@ -49,6 +50,13 @@ class ToDosController < ApplicationController
         format.json { render json: @to_do.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def create_samples
+    10.times do
+      ToDo.create(title: Faker::Lorem.words(number: 4).join(' '))
+    end
+    redirect_to action: :index
   end
 
   # DELETE /to_dos/1
